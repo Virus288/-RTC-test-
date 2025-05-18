@@ -3,17 +3,17 @@ import State from '../../../tools/state';
 import type * as enums from '../../../enums/index';
 import type * as types from '../../../types/index';
 
-const getController = <T extends enums.EControllers, N extends types.IControllerActions>(
+const getService = <T extends enums.EServices, N extends types.IServiceActions>(
   target: T,
   subTarget: N,
-): types.IInnerController[T][N] => {
+): types.IInnerService[T][N] => {
   const controller = State.controllers.resolve(target);
   if (!controller) throw new errors.UnregisteredControllerError(target);
 
-  const subController = controller.resolve(subTarget) as types.IInnerController[T][N];
-  if (!subController) throw new errors.UnregisteredControllerError(subTarget as string);
+  const service = controller.resolve(subTarget) as types.IInnerService[T][N];
+  if (!service) throw new errors.UnregisteredControllerError(subTarget as string);
 
-  return subController;
+  return service;
 };
 
-export default getController;
+export default getService;

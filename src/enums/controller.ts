@@ -2,6 +2,6 @@ export enum EHealthActions {
   Get = 'getHealth',
 }
 
-export enum EControllers {
+export enum EServices {
   Health = 'health',
 }

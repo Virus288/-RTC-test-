@@ -50,6 +50,10 @@ npm run build / yarn build
 
 ## 4. Tests
 
+### All test currently are written using vitest. 
+
+Due to limitations, e2e and unit tests are both running globalSetup used only for e2e tests. This is done, to have 1 coverage file, instead of multiple. This has some drawbacks, like tests running slower, but will have a green text in terminal. In order to make unit tests faster, create 2 separate files for tests.
+
 ## 5. Useful information
 
 ### 5.1 Hooks

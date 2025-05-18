@@ -56,6 +56,8 @@ class State extends EventEmitter implements IState {
 
   kill(): void {
     this.alive = false;
+    this.controllers.close();
+    this.router.close();
 
     Log.log('Server', 'App closed');
     process.exit(0);
