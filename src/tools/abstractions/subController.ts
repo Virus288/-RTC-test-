@@ -1,5 +1,5 @@
-import type { EControllers } from '../../enums/index.js';
-import type { IController } from '../../types/index.js';
+import type { EControllers } from '../../enums/index';
+import type { IController } from '../../types/index';
 
 export default abstract class ControllerFactory<T extends EControllers> {
   private readonly _repository: IController[T];
