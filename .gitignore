@@ -1,25 +1,36 @@
+# Logs
 logs
 *.log
 npm-debug.log*
 
+# Dependencies
 node_modules/
 
+# Tests
 coverage
 
+# Compiled
 dist/
+tsconfig.build.tsbuildinfo
 
+# Cache
+.eslintcache
+.DS_Store
+tmp/
+.clinic/
+
+# Editors configs
 .vscode
 !.vscode/tasks.js
 .idea/
 
+# Locks and configs
 .npm
+yarn.lock
 
-.eslintcache
-
-.DS_Store
-
+# Configs
 .env
 
-tmp/
+# K8s
+.livenessProbe
 
-.clinic/
