@@ -4,9 +4,9 @@ import State from '../state';
 import type * as enums from '../../enums/index';
 import type * as types from '../../types/index';
 
-export default abstract class AbstractRouter<T extends enums.EControllers, N extends types.IControllerActions> {
+export default abstract class AbstractRouter<T extends enums.EServices, N extends types.IServiceActions> {
   readonly _router: express.Router;
-  protected readonly _controller: types.IInnerController[T][N];
+  protected readonly _controller: types.IInnerService[T][N];
 
   constructor(target: T, subTarget: N) {
     this._router = express.Router();
@@ -14,17 +14,17 @@ export default abstract class AbstractRouter<T extends enums.EControllers, N ext
     const controller = State.controllers.resolve(target);
     if (!controller) throw new errors.UnregisteredControllerError(target);
 
-    const subController = controller.resolve(subTarget) as types.IInnerController[T][N];
-    if (!subController) throw new errors.UnregisteredControllerError(subTarget as string);
+    const service = controller.resolve(subTarget) as types.IInnerService[T][N];
+    if (!service) throw new errors.UnregisteredControllerError(subTarget as string);
 
-    this._controller = subController;
+    this._controller = service;
   }
 
   get router(): express.Router {
     return this._router;
   }
 
-  get controller(): types.IInnerController[T][N] {
+  get controller(): types.IInnerService[T][N] {
     return this._controller;
   }
 }

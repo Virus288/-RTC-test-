@@ -15,7 +15,7 @@
     "lint": "cross-env NODE_ENV=development eslint -c eslint.config.mjs . --fix --cache",
     "listErrors": "node_modules/.bin/tsc --skipLibCheck",
     "lintStaged": "npx lint-staged",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage --config ./test/config.ts"
   },
   "lint-staged": {
     "*.ts": [
@@ -58,6 +58,7 @@
     "eslint-plugin-sort-class-members": "1.21.0",
     "nodemon": "3.1.10",
     "prettier": "3.5.3",
+    "supertest": "^7.1.1",
     "typescript": "5.8.3",
     "vitest": "^3.1.3"
   },

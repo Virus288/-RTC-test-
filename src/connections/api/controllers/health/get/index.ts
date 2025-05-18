@@ -1,7 +1,7 @@
-import { EControllers, EHealthActions } from '../../../../../enums/index';
+import { EServices, EHealthActions } from '../../../../../enums/index';
 import handleErr from '../../../../../errors/handler';
 import Routes from '../../../builder/router';
-import getController from '../../../utils/controllers';
+import getService from '../../../utils/services';
 import type * as types from '../../../../../types/index';
 import type express from 'express';
 
@@ -22,9 +22,9 @@ export default class HealthRouter {
   @Routes.Get('/health')
   async execute(_req: express.Request, res: express.Response): Promise<void> {
     try {
-      const controller = getController(EControllers.Health, EHealthActions.Get);
+      const controller = getService(EServices.Health, EHealthActions.Get);
       const data = await controller.execute();
-      res.status(200).send({ data });
+      res.status(200).send(data);
     } catch (err) {
       handleErr(err as types.IFullError, res);
     }

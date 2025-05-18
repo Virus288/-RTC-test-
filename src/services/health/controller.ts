@@ -2,7 +2,7 @@ import * as enums from '../../enums/index';
 import GetHealthController from './subModules/get/index';
 import AbstractController from '../../tools/abstractions/controller';
 
-export default class HealthController extends AbstractController<enums.EControllers.Health> {
+export default class HealthController extends AbstractController<enums.EServices.Health> {
   /**
    * Register health controllers.
    * @returns Void.
