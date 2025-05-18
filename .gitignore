@@ -30,6 +30,9 @@ yarn.lock
 
 # Configs
 .env
+config/devConfig.json
+config/prodConfig.json
+config/testConfig.json
 
 # K8s
 .livenessProbe
