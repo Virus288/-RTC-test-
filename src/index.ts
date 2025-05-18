@@ -67,7 +67,7 @@ class App {
     Log.log('Server', 'Server started');
 
     ConfigLoader.validateConfig();
-
+    State.alive = true;
     this.listenForSignals();
     Log.log('Server', 'Application initialized');
   }

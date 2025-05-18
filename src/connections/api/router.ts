@@ -1,6 +1,6 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import initHealthRoutes from './services/health/index';
+import initHealthRoutes from './controllers/health/index';
 import { FourOhFour } from '../../errors/index';
 import type express from 'express';
 import type swaggerJsdoc from 'swagger-jsdoc';

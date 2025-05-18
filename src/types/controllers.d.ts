@@ -1,6 +1,6 @@
-import type HealthController from '../controllers/health/controller';
-import type GetHealthController from '../controllers/health/subModules/get/index';
 import type * as enums from '../enums/index';
+import type HealthController from '../services/health/controller';
+import type GetHealthController from '../services/health/subModules/get/index';
 
 export type IControllerActions = enums.EHealthActions;
 

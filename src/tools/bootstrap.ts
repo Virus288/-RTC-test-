@@ -1,6 +1,6 @@
 import Log from './logger/index';
-import HealthController from '../controllers/health/controller';
 import * as enums from '../enums/index';
+import HealthController from '../services/health/controller';
 import type * as types from '../types/index';
 
 /**

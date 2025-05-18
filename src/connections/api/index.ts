@@ -95,8 +95,9 @@ export default class Router {
    * Initialize http server.
    */
   private initServer(): void {
-    if (process.env.NODE_ENV === 'test') return;
     this._server = http.createServer(this.app);
+
+    if (process.env.NODE_ENV === 'test') return;
 
     this.server.listen(ConfigLoader.getConfig().port, () => {
       Log.log('Server', `Listening on ${ConfigLoader.getConfig().port}`);
