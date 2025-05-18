@@ -55,7 +55,7 @@ class App {
    * @description This function is used to initialize logic of application and all of its connections.
    */
   private handleInit(): void {
-    const controllers = new Bootstrap();
+    const controllers = Bootstrap.getInstance();
     const router = new Router();
 
     State.controllers = controllers;

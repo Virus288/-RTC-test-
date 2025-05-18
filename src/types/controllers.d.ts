@@ -1,21 +1,21 @@
 import type * as enums from '../enums/index';
 import type HealthController from '../services/health/controller';
-import type GetHealthController from '../services/health/subModules/get/index';
+import type GetHealthService from '../services/health/subModules/get/index';
 
-export type IControllerActions = enums.EHealthActions;
+export type IServiceActions = enums.EHealthActions;
 
-type IControllerActionsMap = {
-  [K in IControllerActions]: unknown;
+type IServiceActionsMap = {
+  [K in IServiceActions]: unknown;
 };
 
-export interface IHealthControllers extends IControllerActionsMap {
-  [enums.EHealthActions.Get]: GetHealthController;
+export interface IHealthServices extends IServiceActionsMap {
+  [enums.EHealthActions.Get]: GetHealthService;
 }
 
-export interface IController {
-  [enums.EControllers.Health]: HealthController;
+export interface IService {
+  [enums.EServices.Health]: HealthController;
 }
 
-export interface IInnerController {
-  [enums.EControllers.Health]: IHealthControllers;
+export interface IInnerService {
+  [enums.EServices.Health]: IHealthServices;
 }
