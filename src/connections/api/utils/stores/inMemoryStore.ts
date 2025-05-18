@@ -11,6 +11,10 @@ export default class InMemoryStore implements Store {
     return this._store;
   }
 
+  /**
+   * Increment entry.
+   * @param target Ip to increment.
+   */
   async increment(target: string): Promise<IncrementResponse> {
     return new Promise((resolve) => {
       let data: ClientRateLimitInfo | undefined = this.store.get(target);
@@ -30,6 +34,10 @@ export default class InMemoryStore implements Store {
     });
   }
 
+  /**
+   * Reset entry.
+   * @param target Ip to reset.
+   */
   async resetKey(target: string): Promise<void> {
     return new Promise((resolve) => {
       this.store.delete(target);
@@ -37,6 +45,10 @@ export default class InMemoryStore implements Store {
     });
   }
 
+  /**
+   * Decrement entry.
+   * @param target Ip to decrement.
+   */
   async decrement(target: string): Promise<void> {
     return new Promise((resolve) => {
       let data: ClientRateLimitInfo | undefined = this.store.get(target);

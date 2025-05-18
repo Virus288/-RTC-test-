@@ -1,6 +1,6 @@
-import State from '../../src/tools/state.js';
-import Router from '../../src/connections/api/index.js';
-import Bootstrap from '../../src/tools/bootstrap.js';
+import State from '../../src/tools/state';
+import Router from '../../src/connections/api/index';
+import Bootstrap from '../../src/tools/bootstrap';
 
 export default class Utils {
   constructor() {
