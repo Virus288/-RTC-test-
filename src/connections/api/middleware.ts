@@ -11,11 +11,36 @@ import { randomUUID } from 'crypto';
 export default class Middleware {
   /**
    * Generate generic middleware.
-   * @param app
+   * @param app Express server.
    */
   generateMiddleware(app: Express): void {
     app.use(express.json({ limit: '10kb' }));
     app.use(express.urlencoded({ extended: true }));
+
+    this.setSecurity(app);
+    this.setBaseHeaders(app);
+    this.logRequests(app);
+    this.measureTime(app);
+  }
+
+  /**
+   * Set base headers.
+   * @param app Express server.
+   */
+  private setBaseHeaders(app: Express): void {
+    app.use((_req: express.Request, res, next: express.NextFunction) => {
+      res.header('Content-Type', 'application/json;charset=UTF-8');
+      res.header('Access-Control-Allow-Credentials', 'true');
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+      next();
+    });
+  }
+
+  /**
+   * Initialize helmet.
+   * @param app Express server.
+   */
+  private setSecurity(app: Express): void {
     app.use(
       cors({
         origin: ConfigLoader.getConfig().corsOrigin,
@@ -41,21 +66,11 @@ export default class Middleware {
         },
       }),
     );
-
-    app.use((_req: express.Request, res, next: express.NextFunction) => {
-      res.header('Content-Type', 'application/json;charset=UTF-8');
-      res.header('Access-Control-Allow-Credentials', 'true');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-      next();
-    });
-
-    this.logRequests(app);
-    this.measureTime(app);
   }
 
   /**
    * Measure time for each request.
-   * @param app
+   * @param app Express server.
    */
   private measureTime(app: Express): void {
     app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -72,7 +87,7 @@ export default class Middleware {
 
   /**
    * Log each request.
-   * @param app
+   * @param app Express server.
    */
   private logRequests(app: Express): void {
     app.use((req, _res, next) => {
@@ -107,7 +122,7 @@ export default class Middleware {
 
   /**
    * Generate middleware to handle uncought errors.
-   * @param app
+   * @param app Express server.
    */
   generateErrHandler(app: Express): void {
     app.use(

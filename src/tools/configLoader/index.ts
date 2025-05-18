@@ -47,6 +47,9 @@ export default class ConfigLoader {
     }
   }
 
+  /**
+   * Validate if config is correct.
+   */
   static validateConfig(): void {
     ConfigLoader.getConfig();
   }

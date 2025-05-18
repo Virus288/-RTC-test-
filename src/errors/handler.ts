@@ -3,6 +3,11 @@ import Log from '../tools/logger/index';
 import type * as types from '../types/index';
 import type express from 'express';
 
+/**
+ * Handle error from express api.
+ * @param err
+ * @param res
+ */
 const handleErr = (err: types.IFullError, res: express.Response): void => {
   Log.error('Router error handler', err.message, err.stack);
 
