@@ -1,0 +1,81 @@
+/* eslint no-console: 0 */
+
+import type { ELoggerColors } from './enums';
+
+export default class Logger {
+  private static readonly _colors: Record<ELoggerColors, (text: string) => string> = {
+    red: (text: string) => `\x1b[31m${text}\x1b[0m`,
+    yellow: (text: string) => `\x1b[33m${text}\x1b[0m`,
+    blue: (text: string) => `\x1b[34m${text}\x1b[0m`,
+    magenta: (text: string) => `\x1b[35m${text}\x1b[0m`,
+    gray: (text: string) => `\x1b[90m${text}\x1b[0m`,
+    yellowBright: (text: string) => `\x1b[93m${text}\x1b[0m`,
+    bgBlue: (text: string) => `\x1b[44m${text}\x1b[0m`,
+  };
+
+  private static _counter: { target: string; start: number }[] = [];
+
+  private static get counter(): { target: string; start: number }[] {
+    return Logger._counter;
+  }
+
+  private static set counter(val: { target: string; start: number }[]) {
+    Logger._counter = val;
+  }
+
+  private static get colors(): Record<ELoggerColors, (text: string) => string> {
+    return Logger._colors;
+  }
+
+  static log(target: string, ...messages: unknown[]): void {
+    console.log(Logger.colors.blue(`${Logger.getTime()} Log.log: `), target, ...messages);
+  }
+
+  static debug(target: string, ...messages: unknown[]): void {
+    console.log(Logger.colors.magenta(`${Logger.getTime()} Log.Debug: `), target, ...messages);
+  }
+
+  static warn(target: string, ...messages: unknown[]): void {
+    console.warn(Logger.colors.yellow(`${Logger.getTime()} Log.Warn: `), target, ...messages);
+  }
+
+  static trace(target: string, ...messages: unknown[]): void {
+    console.trace(Logger.colors.yellowBright(`${Logger.getTime()} Log.Trace: `), target);
+    console.log(...messages);
+  }
+
+  static error(target: string, ...messages: unknown[]): void {
+    console.error(Logger.colors.red(`${Logger.getTime()} Log.Error: `), target, ...messages);
+  }
+
+  static time(target: string, ...messages: unknown[]): void {
+    Logger.counter.push({ target, start: Date.now() });
+    console.log(...messages);
+  }
+
+  static endTime(target: string, ...messages: unknown[]): void {
+    const localTarget = Logger.counter.filter((e) => e.target === target);
+
+    if (localTarget.length === 0) {
+      console.log(Logger.colors.bgBlue(`${Logger.getTime()} Log.Time: `), target, 'error', 'Could not find time start');
+    } else {
+      Logger.counter = Logger.counter.filter(
+        (e) => e.target !== localTarget[0]!.target && e.start !== localTarget[0]!.start,
+      );
+      console.log(
+        Logger.colors.bgBlue(`${Logger.getTime()} Log.Time: `),
+        target,
+        `Time passed: ${((Date.now() - localTarget[0]!.start) / 1000).toFixed(2)}s`,
+      );
+    }
+
+    messages.forEach((m) => {
+      console.log(`${Logger.getTime()} Log.Time: `, target, m);
+    });
+  }
+
+  private static getTime(): string {
+    const now = new Date();
+    return `[${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}]`;
+  }
+}
