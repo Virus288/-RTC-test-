@@ -1,5 +1,5 @@
-import type * as enums from '../../enums/index.js';
-import type * as types from '../../types/index.js';
+import type * as enums from '../../enums/index';
+import type * as types from '../../types/index';
 
 export default abstract class AbstractController<T extends enums.EControllers> {
   private readonly _controllers: Map<

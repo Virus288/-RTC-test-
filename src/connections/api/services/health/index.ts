@@ -1,4 +1,4 @@
-import GetHealthRouter from './get/index.js';
+import GetHealthRouter from './get/index';
 
 /**
  * Initialize routes for health router.

@@ -1,7 +1,7 @@
-import * as errors from '../../../errors/index.js';
-import State from '../../../tools/state.js';
-import type * as enums from '../../../enums/index.js';
-import type * as types from '../../../types/index.js';
+import * as errors from '../../../errors/index';
+import State from '../../../tools/state';
+import type * as enums from '../../../enums/index';
+import type * as types from '../../../types/index';
 
 const getController = <T extends enums.EControllers, N extends types.IControllerActions>(
   target: T,
