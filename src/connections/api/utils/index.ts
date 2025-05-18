@@ -1,7 +1,7 @@
 import rateLimit from 'express-rate-limit';
-import { ETTL } from '../enums.js';
-import RateLimitStore from './stores/rateLimiter.js';
-import ConfigLoader from '../../../tools/configLoader/index.js';
+import { ETTL } from '../enums';
+import RateLimitStore from './stores/rateLimiter';
+import ConfigLoader from '../../../tools/configLoader/index';
 import type express from 'express';
 
 /**

@@ -1,4 +1,4 @@
-import InMemoryStore from './inMemoryStore.js';
+import InMemoryStore from './inMemoryStore';
 import Log from '../../../../tools/logger/index';
 import type { IncrementResponse, Store } from 'express-rate-limit';
 
