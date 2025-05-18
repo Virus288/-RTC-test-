@@ -1,0 +1,12 @@
+**/.env
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/docker-compose*
+**/compose*
+**/Dockerfile*
+**/npm-debug.log
+tests
+node_modules
+README.md
