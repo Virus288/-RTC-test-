@@ -12,7 +12,6 @@ class State extends EventEmitter implements IState {
 
   private constructor() {
     super();
-    //
   }
 
   static get instance(): State | null {
@@ -54,6 +53,9 @@ class State extends EventEmitter implements IState {
     return State.instance;
   }
 
+  /**
+   * Kill application and all of its connections.
+   */
   kill(): void {
     this.alive = false;
     this.controllers.close();

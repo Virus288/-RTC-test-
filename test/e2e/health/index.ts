@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import supertest from 'supertest'
-import State from '../../../src/tools/state.js'
+import State from '../../../src/tools/state'
 import { Express } from 'express'
-import { IGetHealth } from '../../../src/services/health/subModules/get/types.js';
+import { IGetHealth } from '../../../src/services/health/subModules/get/types';
 
 describe('Health', () => {
   let app: Express | null = null

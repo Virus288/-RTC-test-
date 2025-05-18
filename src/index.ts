@@ -72,6 +72,9 @@ class App {
     Log.log('Server', 'Application initialized');
   }
 
+  /**
+   * Initialize listeners for sigterm and sigint.
+   */
   private listenForSignals(): void {
     process.on('SIGTERM', () => {
       Log.log('Server', 'Received signal SIGTERM. Gracefully closing');

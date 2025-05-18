@@ -27,32 +27,69 @@ export default class Logger {
     return Logger._colors;
   }
 
+  /**
+   * Log new log.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static log(target: string, ...messages: unknown[]): void {
     console.log(Logger.colors.blue(`${Logger.getTime()} Log.log: `), target, ...messages);
   }
 
+  /**
+   * Log new debug.
+   * This log will not show up, when NODE_ENV is set to production.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static debug(target: string, ...messages: unknown[]): void {
     console.log(Logger.colors.magenta(`${Logger.getTime()} Log.Debug: `), target, ...messages);
   }
 
+  /**
+   * Log new warning.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static warn(target: string, ...messages: unknown[]): void {
     console.warn(Logger.colors.yellow(`${Logger.getTime()} Log.Warn: `), target, ...messages);
   }
 
+  /**
+   * Trace selected data and log related params.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static trace(target: string, ...messages: unknown[]): void {
     console.trace(Logger.colors.yellowBright(`${Logger.getTime()} Log.Trace: `), target);
     console.log(...messages);
   }
 
+  /**
+   * Log new error.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static error(target: string, ...messages: unknown[]): void {
     console.error(Logger.colors.red(`${Logger.getTime()} Log.Error: `), target, ...messages);
   }
 
+  /**
+   * Start counting time.
+   * To end time counting, run `log.endtime` with the same target.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static time(target: string, ...messages: unknown[]): void {
     Logger.counter.push({ target, start: Date.now() });
     console.log(...messages);
   }
 
+  /**
+   * End counting time.
+   * @param target Log target used as prefix for log.
+   * @param {...unknown} messages All messages that you want to log.
+   */
   static endTime(target: string, ...messages: unknown[]): void {
     const localTarget = Logger.counter.filter((e) => e.target === target);
 
@@ -74,6 +111,9 @@ export default class Logger {
     });
   }
 
+  /**
+   * Return preformatted time.
+   */
   private static getTime(): string {
     const now = new Date();
     return `[${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}]`;

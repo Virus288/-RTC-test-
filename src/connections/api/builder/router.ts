@@ -100,6 +100,9 @@ export default class Routes {
     };
   }
 
+  /**
+   * Wait for express server to be initialized in application.
+   */
   private static waitForServer(): void {
     State.removeAllListeners('initialized');
     State.once('initialized', () => {

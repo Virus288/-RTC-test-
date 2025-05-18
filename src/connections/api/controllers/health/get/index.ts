@@ -14,10 +14,16 @@ export default class HealthRouter {
    *   get:
    *     tags:
    *       - health
-   *     description: Check if services are responding
+   *     summary: Health check
+   *     description: |
+   *       Simple endpoint to check if the service is alive and responding.
    *     responses:
    *       200:
-   *         description: Success. Got information about services
+   *         description: Service is alive and responding
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/HealthStatus'
    */
   @Routes.Get('/health')
   async execute(_req: express.Request, res: express.Response): Promise<void> {
