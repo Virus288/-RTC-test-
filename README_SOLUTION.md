@@ -8,7 +8,9 @@ TLDR:
 
 ## 1. Description
 
-This application is a crawler, used get information about sport events. Description is WIP for now.
+This application is a crawler, used get information about sport events. Description is WIP for now. 
+
+I do understand, that for a basic task of crawling over few apis, this infrastructure based on DI is a overkill ( original readme point Guidelines.2. ), but it was easier for me to work with it that way. Working with others on a code will differ from this app.
 
 ## 2. How to start
 

@@ -208,14 +208,7 @@ export default [
             'no-confusing-arrow': 2,
             'no-constant-binary-expression': 0,
             'no-constant-condition': 2,
-
-            'no-console': [
-                0,
-                {
-                    allow: ['info', 'trace'],
-                },
-            ],
-
+            'no-console': 2,
             'no-constructor-return': 0,
             'no-empty-pattern': 2,
             'no-func-assign': 2,
@@ -243,7 +236,12 @@ export default [
             'no-unexpected-multiline': 2,
             'no-unreachable': 2,
             'no-unsafe-negation': 2,
-            'no-use-before-define': 2,
+            "no-use-before-define": [0, {
+                "functions": true,
+                "classes": false,
+                "variables": true,
+                "allowNamedExports": false
+            }],
             'no-octal': 2,
             'no-redeclare': 2,
             'no-regex-spaces': 2,
@@ -292,7 +290,7 @@ export default [
             'prefer-template': 2,
             'prettier/prettier': 2,
             'require-atomic-updates': 0,
-            'require-unicode-regexp': 2,
+            'require-unicode-regexp': 0,
             'require-yield': 2,
             'sort-class-members/sort-class-members': [
                 2,
