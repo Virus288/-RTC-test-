@@ -37,7 +37,7 @@ export default [
         ),
     ).map((config) => ({
         ...config,
-        files: ['src/**/*.ts', 'src/**/**.*.json'],
+        files: ['src/**/*.ts', 'src/**/**.*.json', 'test/**/**.ts'],
     })),
     {
         ignores: ['dist', 'eslint.config.mjs', 'node_modules', 'coverage'],
@@ -91,9 +91,9 @@ export default [
             'class-methods-use-this': 0,
 
             'check-file/folder-match-with-fex': [
-                2,
+                0,
                 {
-                    '*.test.{js,ts}': '**/__tests__/**',
+                    '*.test.{js,ts}': '**/tests/**',
                 },
             ],
 

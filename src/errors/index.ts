@@ -147,3 +147,92 @@ export class UnregisteredControllerError extends FullError {
     this.status = 500;
   }
 }
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     RequestTimedOut:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Error name describing the error cause.
+ *           example: 'RequestTimedOut'
+ *         code:
+ *           type: string
+ *           description: Unique code associated with the error.
+ *           example: '006'
+ *         message:
+ *           type: string
+ *           description: Error message describing the error cause.
+ *           example: 'Request timed out'
+ */
+export class RequestTimedOut extends FullError {
+  constructor() {
+    super('Request timed out');
+    this.name = 'RequestTimedOut';
+    this.code = '006';
+    this.status = 400;
+  }
+}
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     NoRepositoryControllerSpecified:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Error name describing the error cause.
+ *           example: 'NoRepositoryControllerSpecified'
+ *         code:
+ *           type: string
+ *           description: Unique code associated with the error.
+ *           example: '007'
+ *         message:
+ *           type: string
+ *           description: Error message describing the error cause.
+ *           example: 'No repository controller specified. Make sure that your config includes correct controller and that you implemented it in repository factory. Read more in /docs/HowToStart.md'
+ */
+export class NoRepositoryControllerSpecified extends FullError {
+  constructor() {
+    super(
+      'No repository controller specified. Make sure that your config includes correct controller and that you implemented it in repository factory. Read more in /docs/HowToStart.md',
+    );
+    this.name = 'NoRepositoryControllerSpecified';
+    this.code = '007';
+    this.status = 500;
+  }
+}
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     MissingMappingsError:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Error name describing the error cause.
+ *           example: 'MissingMappingsError'
+ *         code:
+ *           type: string
+ *           description: Unique code associated with the error.
+ *           example: '008'
+ *         message:
+ *           type: string
+ *           description: Error message describing the error cause.
+ *           example: 'Missing mapping for selected simulation'
+ */
+export class MissingMappingsError extends FullError {
+  constructor() {
+    super('Missing mapping for selected simulation.');
+    this.name = 'MissingMappingsError';
+    this.code = '008';
+    this.status = 400;
+  }
+}
