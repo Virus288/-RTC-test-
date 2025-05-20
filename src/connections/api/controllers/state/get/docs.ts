@@ -15,7 +15,7 @@
  *       enum:
  *         - HOME
  *         - AWAY
- *       description: Identifies a competitor as home or away.
+ *       description: Identifier for team.
  *       example: HOME
  *
  *     SimulationScores:
@@ -23,8 +23,8 @@
  *       properties:
  *         type:
  *           type: string
- *           description: The type of score (e.g., final, halftime).
- *           example: "final"
+ *           description: The type of score.
+ *           example: "CURRENT"
  *         home:
  *           type: string
  *           description: Score for the home team.
@@ -42,38 +42,38 @@
  *         name:
  *           type: string
  *           description: Name of the competitor.
- *           example: "Team A"
+ *           example: "HOME"
  *
  *     SimulationState:
  *       type: object
  *       properties:
  *         id:
  *           type: string
- *           description: Unique identifier of the simulation.
- *           example: "sim-1234"
+ *           description: Identifier of the simulation.
+ *           example: "1234"
  *         status:
  *           $ref: '#/components/schemas/ESimulationStatus'
  *         scores:
  *           type: object
  *           additionalProperties:
  *             $ref: '#/components/schemas/SimulationScores'
- *           description: Scores keyed by arbitrary string identifiers.
+ *           description: Scores for each of teams.
  *         startTime:
  *           type: string
  *           format: date-time
- *           description: ISO string for the start time of the simulation.
+ *           description: ISO string for start time of the simulation.
  *           example: "2025-05-18T14:00:00Z"
  *         sport:
  *           type: string
  *           description: Type of sport for the simulation.
- *           example: "football"
+ *           example: "FOOTBALL"
  *         competitors:
  *           type: object
  *           additionalProperties:
  *             $ref: '#/components/schemas/SimulationCompetitors'
- *           description: Competitors keyed by HOME or AWAY.
+ *           description: Competitors list, which includes 'HOME' or 'AWAY'.
  *         competition:
  *           type: string
  *           description: Name or ID of the competition.
- *           example: "Premier League"
+ *           example: "Random game"
  */
