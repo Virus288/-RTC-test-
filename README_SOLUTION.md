@@ -1,5 +1,8 @@
 # Real-time Crawlers - Readme
 
+> [!TIP]
+> Small note for people, who will "validate" this application. Please check for additional notes in [Notes](./README_DOCS.md) file
+
 TLDR:
 1. [Description](#1-description)
 2. [How to start](#2-how-to-start)
