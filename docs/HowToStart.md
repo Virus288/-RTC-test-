@@ -48,6 +48,9 @@ Ttterations timeout defines how often request will be send to fetch new data
 
 Repository is config, what kind of repo should be chosen while saving the data. Currently, only supported repo is `memory`
 
+> [!TIP]
+> You can find exampleConfig in `/configs` folder. Place your new configs next to it
+
 ## 2. Startup
 
 This application will start on port, you provided in configs. In addition to that, this application will also expose swagger docs on /api/docs.
