@@ -116,6 +116,10 @@ export default class Logger {
    */
   private static getTime(): string {
     const now = new Date();
-    return `[${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}]`;
+    const h = now.getHours();
+    const m = now.getMinutes();
+    const s = now.getSeconds().toString().length === 1 ? `0${now.getSeconds()}` : now.getSeconds();
+
+    return `[${h}:${m}:${s}]`;
   }
 }

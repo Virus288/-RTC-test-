@@ -107,7 +107,11 @@ Each config includes few elements:
   "port": 5003,
   "myAddress": "http://localhost",
   "corsOrigin": ["http://localhost"],
-  "trustProxy": false
+  "trustProxy": false,
+  "apiTarget": "http://localhost:3000",
+  "apiReqTimeout": 5000,
+  "iterationsTimeout": 1000,
+  "repository": "memory"
 }
 ```
 
@@ -118,6 +122,14 @@ MyAddress is address, that will be used to host this application.
 CorsOrigin is list of website that will use this application. If you do not care about it, set ["*"].
 
 Trust proxy is an option for express-rate-limiter to use. If set to true, if will disable security settings, meant to validate headers.
+
+Api target is api target, that this app should aim for.
+
+Api req timeout is timeout, which after fetch should throw an error
+
+Ttterations timeout defines how often request will be send to fetch new data
+
+Repository is config, what kind of repo should be chosen while saving the data. Currently, only supported repo is `memory`
 
 ## 6. Docs
 
@@ -161,6 +173,8 @@ This application uses my personal eslint settings. They are EXTREMELY strict and
 
 In addition to having super stupid strict eslint, tsconfig is also super strict. I love how c/c++ requires user to have strict code. I tried to make similarly strict tsconfig, but because typescript is dynamically types, it is not possible. I did my best :D . In case that this config is too strict, simply modify it however you want.
 
+This application uses simple schema, where each type and interface have `I` prefix, where each enum has `E` prefix. This simple way is extremely good for understanding, what type of data each param is. This way of writing code is forced by eslint.
+
 ## 8. Issues 
 
 > [!TIP]
@@ -190,9 +204,8 @@ If you are unable to run make command, remove dist folder
 
 Due to amount of eslint modules, some of them might not be compatible with each other. At one day they might be and after npm install, they might throw errors. Simply update them to latest versions. This is safe, because eslint does not make many breaking changes.
 
-## 7. Addons
+## 9. Addons
 
 In package.json, engine is locked to version +=19. This was done, because eslint wasn't compatible with version below 19. Running this app should still be possible in version below 19. This was done, only for eslint.
 
 Original tsconfig was also slightly modified by me. I did not see any reason to have declarations included, since this application wasn't meant to be a external package, rather a API. In addition to removing declarations, I've decided to addon my personal "base" setup. This was done, because original tsconfig wasn't super strict and this project is my project. Modifications of config files like this should always be resolved in a team.
-

@@ -84,16 +84,19 @@ export default class ConfigLoader {
 
       switch (key) {
         case EConfigKeys.PORT:
+        case EConfigKeys.API_REQ_TIMEOUT:
+        case EConfigKeys.ITERATIONS_TIMEOUT:
           config[key] = Number(target);
           break;
         case EConfigKeys.CORS_ORIGIN:
           config[key] = target.split(',');
           break;
-        case EConfigKeys.MY_ADDRESS:
-          config[key] = target;
-          break;
         case EConfigKeys.TRUST_PROXY:
           config[key] = !!target;
+          break;
+        case EConfigKeys.MY_ADDRESS:
+        case EConfigKeys.API_TARGET:
+          config[key] = target;
           break;
         default:
           break;
