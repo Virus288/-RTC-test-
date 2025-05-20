@@ -10,6 +10,8 @@ I also modified preexisting tsconfig and added eslint. I did those 2 things, bec
 
 I wrote this app in `Git flow` schema, trying to keep main branch ( dev in my example, with regular pushed to main and tagging every proper version ) as "straight" as possible, properly rebasing all commits as I do usually at work.
 
+I wrote this app, compiling it to es22. I am used to having getters and setter, but because they take too much space I used accessors. Why, since they are not required ? Old habits die hard I guess ? Having schematic code is good, because its more readable even for people, who do not work daily on the same languages. Getters and setters in state are used for interface manipulation. By the time any data from state will be used, every field on state will be properly initialized.
+
 ## How to start
 
 I assume that you don't want to read a wall of text on how to start this app, Simply make sure that you have node.js with version bigger than 19 ( because I use native fetch ) and do:

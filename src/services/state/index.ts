@@ -116,7 +116,11 @@ export default class ClientLogic {
 
     if (this.newGame) {
       const mappings = await this.getMappings();
-      this.state.updateMappings(mappings);
+      if (!mappings || Object.keys(mappings).length === 0) {
+        Log.error('Client logic', 'Got empty mappings from server. Did something die ?');
+      } else {
+        this.state.updateMappings(mappings);
+      }
     }
 
     const simulations = await this.getSimulation();
