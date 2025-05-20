@@ -6,7 +6,6 @@ export default class FakeConfigLoader {
       port: 5008,
       myAddress: 'http://localhost',
       corsOrigin: ['http://localhost'],
-      trustProxy: false,
       apiTarget: 'http://localhost:3000',
       apiReqTimeout: 5000,
       iterationsTimeout: 1000,
