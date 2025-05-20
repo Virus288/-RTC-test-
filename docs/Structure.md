@@ -7,8 +7,9 @@ Last update: 18.05.2025
 
 TLDR:
 1. [Base structure](#1-base-structure)
+2. [Specific structure](#2-specific-structure)
 
-# 1. Base structure
+## 1. Base structure
 
 This application is written in DI ( dependency injection ) system. Every logical module ( service, controller ) has its own place and whole application is started in bootstrap, which can be found in [Application code](../src/tools/bootstrap.ts). I am trying to keep it as TDD as possible.
 
@@ -62,7 +63,7 @@ Utils are functions, used inside express
 
 - Services
 
-Services folder includes all logic, from this application. Flow of data is explained in documentation in [Dataflow diagram](./diagrams/Dataflow.md). This folder is divided by main modules and their submodules. Each "module", similarly like in nest.js, is controlling part of code related to itself. It can also "borrow" other services.
+Services folder includes all logic, from this application. Flow of data is explained in documentation in [Dataflow diagram](./diagrams/Dataflow.md). This folder is divided by main modules and their submodules. Each "module", similarly like in nest.js, is controlling part of code related to itself. It can also "borrow" other services. Controller in this folder is used as a sub bootstrap for DI system. It initializes each class.
 
 - Enums
 Enums is small folder, which include enums, which are used widely within the application. They are not solely used by specific fields
@@ -78,4 +79,12 @@ Tools folder includes tools, like state, abstractions and bootstrap, used to ini
 - Types
 
 Types folder includes all interfaces used widely in whole application.
+
+## 2. Specific structure
+
+Besides all files mentioned above, main logic of this app is included in `services/state` folder. In this folder you can also find:
+
+- clientState, which is used to hold locall data and "form" it, by decoding mappings, simulations etc.
+
+- index is used as a main logic point of communication with external services. This class communicates with external apis, pushes data to state and listens for actions from state itself
 
