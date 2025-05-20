@@ -38,6 +38,10 @@ export const diffSimulations = (
   return changes;
 };
 
+/**
+ * Check if element is object type.
+ * @param data
+ */
 const isObject = (data: unknown): data is Record<string, unknown> => {
   return !!data && typeof data === 'object' && !Array.isArray(data);
 };

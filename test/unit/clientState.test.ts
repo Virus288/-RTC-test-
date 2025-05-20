@@ -35,5 +35,21 @@ describe('Client state', () => {
       const simulations = clientState.getGames();
       expect(simulations.length).toBe(10);
     });
+
+    it('Should resolve simulation with mappings, but return only ones marked other than removed', () => {
+      clientState.updateMappings((fakeData.data.rawMappings as ISimulationMappingsBody[])[0]!);
+      const status = clientState.updateSimulation((fakeData.data.raw as ISimulationStateBody[])[0]!);
+
+      expect(status).toBe(true);
+
+      const partOfFakeData = fakeData.data.raw[0]!.odds.split('\n').shift();
+
+      const status2 = clientState.updateSimulation({ odds: partOfFakeData! });
+
+      expect(status2).toBe(true);
+
+      const simulations = clientState.getGames();
+      expect(simulations.length).toBe(1);
+    });
   });
 });
