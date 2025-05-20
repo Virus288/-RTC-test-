@@ -1,14 +1,13 @@
 import { beforeEach, afterEach, describe, expect, it } from 'vitest';
 import ClientState from '../../src/services/state/clientState';
 import fakeData from '../utils/fakes/data/fakeSimulation.json';
-import FakeSimulationRepository from '../utils/fakes/repos/simulationRepository';
 import type { ISimulationMappingsBody, ISimulationStateBody } from '../../src/services/state/types';
 
 describe('Client state', () => {
   let clientState: ClientState;
 
   beforeEach(() => {
-    clientState = ClientState.getInstance(FakeSimulationRepository.getInstance());
+    clientState = ClientState.getInstance();
   });
 
   afterEach(() => {

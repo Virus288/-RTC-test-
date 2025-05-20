@@ -3,7 +3,6 @@ import { diffSimulations } from './utils';
 import { ESimulationCompetitors, ESimulationStatus } from '../../enums';
 import { MissingMappingsError } from '../../errors';
 import Log from '../../tools/logger/index';
-import type { ISimulationRepository } from './repository/types';
 import type {
   IRepositoryGetData,
   ISimulationMappings,
@@ -15,23 +14,17 @@ import type {
 import type { IFullError } from '../../types/index';
 
 export default class ClientState {
-  protected constructor(repository: ISimulationRepository) {
-    this.repository = repository;
-  }
-
   protected static accessor instance: ClientState | undefined = undefined;
 
-  static getInstance(repository: ISimulationRepository): ClientState {
-    ClientState.instance ??= new ClientState(repository);
+  static getInstance(): ClientState {
+    ClientState.instance ??= new ClientState();
 
     return ClientState.instance;
   }
 
-  private accessor repository: ISimulationRepository;
   private accessor mappings: Map<string, string> = new Map();
   private accessor simulations: Map<string, ISimulationState> = new Map();
   private accessor rawSimulations: ISimulationStateBody[] = [];
-  private accessor iterations: number = 0;
 
   /**
    * Update simulation data.
@@ -41,13 +34,6 @@ export default class ClientState {
   updateSimulation(reqBody: ISimulationStateBody): boolean {
     Log.debug('Client state', 'Updating simulation');
 
-    this.iterations++;
-
-    if (this.iterations >= 10) {
-      this.saveAll();
-      this.iterations = 0;
-    }
-
     let callback: boolean = false;
 
     try {
@@ -56,8 +42,6 @@ export default class ClientState {
       if ((err as IFullError).code === new MissingMappingsError().code) {
         Log.error('Client state', 'Mappings are missing. Will redo previous batch on the next run'); // In my opinion, this should be a warning, but according to guide, error
 
-        this.saveAll();
-        this.iterations = 0;
         this.simulations.clear();
         return false;
       }
@@ -65,7 +49,6 @@ export default class ClientState {
 
     if (!callback) {
       // This assumes that callback can fail only because mappings are missing.
-      this.saveAll();
       this.simulations.clear();
     }
 
@@ -98,31 +81,6 @@ export default class ClientState {
     this.mappings.clear();
     this.simulations.clear();
     this.rawSimulations = [];
-    this.iterations = 0;
-  }
-
-  /**
-   * Save all simulations to database.
-   */
-  private saveAll(): void {
-    Log.debug(
-      'Client state',
-      'Saving all data',
-      `There are ${Array.from(this.simulations.values()).length} elements to save`,
-    );
-
-    if (!Array.from(this.simulations.values()).length) {
-      Log.debug('Client state', 'Nothing to save');
-      return;
-    }
-
-    Promise.allSettled(Array.from(this.simulations.values()).map((s) => this.repository.add(s)))
-      .then(() => {
-        Log.debug('Client state', 'Saved all data');
-      })
-      .catch((err) => {
-        Log.error('Client state', 'Failed to save simulations to database', (err as Error).message);
-      });
   }
 
   /**

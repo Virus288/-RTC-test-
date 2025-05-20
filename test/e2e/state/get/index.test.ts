@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import { afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import State from '../../../../src/tools/state';
 import fakeData from '../../../utils/fakes/data/fakeSimulation.json';
 import FakeClientLogic from '../../../utils/fakes/services/clientLogic';
@@ -21,15 +21,9 @@ describe('State', () => {
   });
 
   beforeEach(() => {
-    State.controllers.init();
-
     State.clientLogic?.close();
     fake = FakeClientLogic.getInstance();
     State.clientLogic = fake;
-  });
-
-  afterEach(() => {
-    State.controllers.close();
   });
 
   describe('Should pass', () => {

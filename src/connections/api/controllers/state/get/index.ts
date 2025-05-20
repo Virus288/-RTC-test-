@@ -1,13 +1,28 @@
-import { EServices, EStateActions } from '../../../../../enums/index';
 import handleErr from '../../../../../errors/handler';
-import Routes from '../../../builder/router';
-import getService from '../../../utils/services';
+import GetStateService from '../../../../../services/state/subModules/get';
+import type { IGetStateReq } from './types';
 import type * as types from '../../../../../types/index';
 import type express from 'express';
 
 export default class StateRouter {
+  constructor(router: express.Express) {
+    this.router = router;
+
+    this.init();
+  }
+
+  private accessor router: express.Express;
+
   /**
-   * @param _req
+   * Initialize route for health.
+   */
+  private init(): void {
+    this.router.get('/client/state', async (_req: IGetStateReq, res) => {
+      await this.execute(res);
+    });
+  }
+
+  /**
    * @param res
    * @openapi
    * /client/state:
@@ -26,10 +41,9 @@ export default class StateRouter {
    *               items:
    *                 $ref: '#/components/schemas/SimulationState'
    */
-  @Routes.Get('/client/state')
-  async execute(_req: express.Request, res: express.Response): Promise<void> {
+  async execute(res: express.Response): Promise<void> {
     try {
-      const controller = getService(EServices.State, EStateActions.Get);
+      const controller = new GetStateService();
       const data = await controller.execute();
       res.status(200).send(data);
     } catch (err) {

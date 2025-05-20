@@ -1,13 +1,28 @@
-import { EServices, EHealthActions } from '../../../../../enums/index';
 import handleErr from '../../../../../errors/handler';
-import Routes from '../../../builder/router';
-import getService from '../../../utils/services';
+import GetHealthService from '../../../../../services/health/subModules/get';
+import type { IGetHealthReq } from './types';
 import type * as types from '../../../../../types/index';
 import type express from 'express';
 
 export default class HealthRouter {
+  constructor(router: express.Express) {
+    this.router = router;
+
+    this.init();
+  }
+
+  private accessor router: express.Express;
+
   /**
-   * @param _req
+   * Initialize route for health.
+   */
+  private init(): void {
+    this.router.get('/health', async (_req: IGetHealthReq, res) => {
+      await this.execute(res);
+    });
+  }
+
+  /**
    * @param res
    * @openapi
    * /health:
@@ -25,10 +40,9 @@ export default class HealthRouter {
    *             schema:
    *               $ref: '#/components/schemas/HealthStatus'
    */
-  @Routes.Get('/health')
-  async execute(_req: express.Request, res: express.Response): Promise<void> {
+  private async execute(res: express.Response): Promise<void> {
     try {
-      const controller = getService(EServices.Health, EHealthActions.Get);
+      const controller = new GetHealthService();
       const data = await controller.execute();
       res.status(200).send(data);
     } catch (err) {

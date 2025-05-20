@@ -14,7 +14,7 @@ export default class Router {
   constructor() {
     this._app = express();
     this._middleware = new Middleware();
-    this._router = new AppRouter(this.app);
+    this._router = new AppRouter();
   }
 
   get app(): express.Express {
@@ -37,7 +37,6 @@ export default class Router {
    * Initialize server.
    */
   init(): void {
-    this.initDocumentation();
     this.initMiddleware();
     this.initRouter();
     this.initServer();
@@ -71,17 +70,10 @@ export default class Router {
   }
 
   /**
-   * Init swagger documentation.
-   */
-  private initDocumentation(): void {
-    this.router.generateDocumentation();
-  }
-
-  /**
    * Init basic routes.
    */
   private initRouter(): void {
-    this.router.initRoutes();
+    this.router.initRoutes(this.app);
   }
 
   /**

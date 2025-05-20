@@ -1,5 +1,7 @@
 # Readme - Notes 
 
+You are currently on `properCode` branch, which has way simpler code. This is done to keep code structure to guide, provided by `README.md` file. There are documents in this branch, which were not updated to mirror proper changes in structure. PLEASE make sure that you read docs for DI, if you walidate DI code
+
 ## Introduction
 
 Hi. if you are here to validate my code, these notes are for you. 

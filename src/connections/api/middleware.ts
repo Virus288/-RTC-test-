@@ -1,6 +1,5 @@
 import cors from 'cors';
 import express from 'express';
-import helmet from 'helmet';
 import * as errors from '../../errors/index';
 import ConfigLoader from '../../tools/configLoader/index';
 import Log from '../../tools/logger/index';
@@ -37,7 +36,7 @@ export default class Middleware {
   }
 
   /**
-   * Initialize helmet.
+   * Initialize cors.
    * @param app Express server.
    */
   private setSecurity(app: Express): void {
@@ -45,25 +44,6 @@ export default class Middleware {
       cors({
         origin: ConfigLoader.getConfig().corsOrigin,
         credentials: true,
-      }),
-    );
-
-    const helmetDirectives = helmet.contentSecurityPolicy.getDefaultDirectives();
-    const allowedUrls = ConfigLoader.getConfig().corsOrigin;
-    app.use(
-      helmet({
-        contentSecurityPolicy: {
-          useDefaults: false,
-          directives: {
-            ...helmetDirectives,
-            'form-action': ["'self'", ...allowedUrls],
-            'script-src': ["'self'"],
-            'default-src': ["'self'", 'data:'],
-            'frame-ancestors': ["'self'", ...allowedUrls],
-            'frame-src': ["'self'", ...allowedUrls],
-            'connect-src': ["'self'", ...allowedUrls],
-          },
-        },
       }),
     );
   }

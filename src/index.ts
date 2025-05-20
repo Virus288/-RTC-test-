@@ -1,6 +1,5 @@
 import Router from './connections/api';
 import ClientLogic from './services/state';
-import Bootstrap from './tools/bootstrap';
 import ConfigLoader from './tools/configLoader/index';
 import Log from './tools/logger';
 import State from './tools/state';
@@ -56,15 +55,12 @@ class App {
    * @description This function is used to initialize logic of application and all of its connections.
    */
   private handleInit(): void {
-    const controllers = Bootstrap.getInstance();
     const router = new Router();
     const clientLogic = ClientLogic.getInstance();
 
-    State.controllers = controllers;
     State.router = router;
     State.clientLogic = clientLogic;
 
-    controllers.init();
     router.init();
     clientLogic.init();
 

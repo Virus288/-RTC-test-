@@ -1,5 +1,4 @@
 import ClientState from './clientState';
-import SimulationFactory from './repository/factory';
 import { RequestTimedOut } from '../../errors/index';
 import ConfigLoader from '../../tools/configLoader';
 import Log from '../../tools/logger';
@@ -9,7 +8,7 @@ import type { IPossiblyFullError } from '../../types';
 
 export default class ClientLogic {
   protected constructor() {
-    this.state = ClientState.getInstance(SimulationFactory.getInstance());
+    this.state = ClientState.getInstance();
   }
 
   protected static accessor instance: ClientLogic | undefined = undefined;

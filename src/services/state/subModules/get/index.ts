@@ -1,9 +1,8 @@
 import Log from '../../../../tools/logger/index';
 import State from '../../../../tools/state';
 import type { IGetSimulationState } from './types';
-import type { IAbstractSubService } from '../../../../types/index';
 
-export default class GetStateService implements IAbstractSubService<IGetSimulationState> {
+export default class GetStateService {
   /**
    * Execute logic for get state service.
    * @param repo

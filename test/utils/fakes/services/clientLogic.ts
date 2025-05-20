@@ -1,7 +1,6 @@
 import { vi } from 'vitest';
 import ClientLogic from '../../../../src/services/state';
 import ClientState from '../../../../src/services/state/clientState';
-import FakeSimulationRepository from '../repos/simulationRepository';
 import type { ISimulationMappingsBody, ISimulationStateBody } from '../../../../src/services/state/types';
 import type { Procedure } from '../../types';
 import type { Mock } from 'vitest';
@@ -11,7 +10,7 @@ export default class FakeClientLogic extends ClientLogic {
 
   protected constructor() {
     super();
-    this.state = ClientState.getInstance(FakeSimulationRepository.getInstance());
+    this.state = ClientState.getInstance();
   }
 
   protected static override accessor instance: FakeClientLogic | undefined = undefined;

@@ -1,20 +1,13 @@
 import Log from './logger/index';
-import type Bootstrap from './bootstrap';
 import type Router from '../connections/api/index';
 import type ClientLogic from '../services/state';
 import type { IState } from '../types/index';
-import { EventEmitter } from 'events';
 
-class State extends EventEmitter implements IState {
+class State implements IState {
   private _alive: boolean = false;
-  private _controllers: Bootstrap | null = null;
   private _router: Router | null = null;
   private _clientLogic: ClientLogic | null = null;
   private static _instance: State | null = null;
-
-  private constructor() {
-    super();
-  }
 
   static get instance(): State | null {
     return State._instance;
@@ -22,14 +15,6 @@ class State extends EventEmitter implements IState {
 
   private static set instance(val: State) {
     State._instance = val;
-  }
-
-  get controllers(): Bootstrap {
-    return this._controllers!;
-  }
-
-  set controllers(val: Bootstrap) {
-    this._controllers = val;
   }
 
   get clientLogic(): ClientLogic {
@@ -46,7 +31,6 @@ class State extends EventEmitter implements IState {
 
   set router(val: Router) {
     this._router = val;
-    if (val) this.emit('initialized');
   }
 
   get alive(): boolean {
@@ -69,7 +53,6 @@ class State extends EventEmitter implements IState {
    */
   kill(exitCode?: number): void {
     this.alive = false;
-    this.controllers.close();
     this.router.close();
     this.clientLogic.close();
 
