@@ -91,9 +91,6 @@ export default class ConfigLoader {
         case EConfigKeys.CORS_ORIGIN:
           config[key] = target.split(',');
           break;
-        case EConfigKeys.TRUST_PROXY:
-          config[key] = !!target;
-          break;
         case EConfigKeys.MY_ADDRESS:
         case EConfigKeys.API_TARGET:
           config[key] = target;

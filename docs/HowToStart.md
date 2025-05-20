@@ -24,7 +24,6 @@ Each config includes few elements:
   "port": 5003,
   "myAddress": "http://localhost",
   "corsOrigin": ["http://localhost"],
-  "trustProxy": false,
   "apiTarget": "http://localhost:3000",
   "apiReqTimeout": 5000,
   "iterationsTimeout": 1000,
@@ -37,8 +36,6 @@ Port is port, that application will use.
 MyAddress is address, that will be used to host this application.
 
 CorsOrigin is list of website that will use this application. If you do not care about it, set ["*"].
-
-Trust proxy is an option for express-rate-limiter to use. If set to true, if will disable security settings, meant to validate headers.
 
 Api target is api target, that this app should aim for.
 

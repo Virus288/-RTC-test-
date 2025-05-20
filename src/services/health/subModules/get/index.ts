@@ -14,7 +14,7 @@ export default class GetHealthService implements IAbstractSubService<IGetHealth>
       Log.debug('Health get service', 'Getting health');
 
       const jsonPackage = JSON.parse(fs.readFileSync('package.json').toString()) as Record<string, string>;
-      resolve({ alive: State.alive, version: jsonPackage.version as string, uptime: uptime().toPrecision(1) });
+      resolve({ alive: State.alive, version: jsonPackage.version as string, uptime: uptime().toFixed(0) });
     });
   }
 }
