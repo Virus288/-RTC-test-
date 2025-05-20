@@ -1,5 +1,6 @@
 import { ESimulationKeys } from './enums';
-import { ESimulationCompetitors } from '../../enums';
+import { diffSimulations } from './utils';
+import { ESimulationCompetitors, ESimulationStatus } from '../../enums';
 import { MissingMappingsError } from '../../errors';
 import Log from '../../tools/logger/index';
 import type { ISimulationRepository } from './repository/types';
@@ -53,7 +54,7 @@ export default class ClientState {
       callback = this.decodeSimulation(reqBody);
     } catch (err) {
       if ((err as IFullError).code === new MissingMappingsError().code) {
-        Log.warn('Client state', 'Mappings are missing. Will redo previous batch on the next run');
+        Log.error('Client state', 'Mappings are missing. Will redo previous batch on the next run'); // In my opinion, this should be a warning, but according to guide, error
 
         this.saveAll();
         this.iterations = 0;
@@ -71,6 +72,10 @@ export default class ClientState {
     return callback;
   }
 
+  /**
+   * Update local mappings.
+   * @param mappings
+   */
   updateMappings(mappings: ISimulationMappingsBody): void {
     Log.log('Client state', 'Starting new simulation');
     Log.debug('Client state', 'Updating mappings');
@@ -83,7 +88,7 @@ export default class ClientState {
    * Get all games.
    */
   getGames(): ISimulationState[] {
-    return Array.from(this.simulations.values());
+    return Array.from(this.simulations.values()).filter((s) => s.status !== ESimulationStatus.REMOVED);
   }
 
   /**
@@ -181,6 +186,8 @@ export default class ClientState {
       },
     };
 
+    const ids: string[] = [];
+
     matches
       .filter((m) => !!m)
       .forEach((m) => {
@@ -189,6 +196,7 @@ export default class ClientState {
         keys.forEach((k) => {
           switch (k) {
             case ESimulationKeys.ID:
+              ids.push(match[0]!);
               baseMatch.id = match[0]!;
               break;
             case ESimulationKeys.SPORT:
@@ -228,6 +236,7 @@ export default class ClientState {
           throw new MissingMappingsError();
         }
 
+        this.compareChanges(baseMatch.id!, baseMatch as ISimulationState);
         this.simulations.set(baseMatch.id!, baseMatch as ISimulationState);
 
         baseMatch = {};
@@ -243,7 +252,39 @@ export default class ClientState {
         };
       });
 
+    this.filterFinishedSimulations(ids);
+
     return true;
+  }
+
+  /**
+   * Mark finished simulations as removed.
+   * @param ids
+   */
+  private filterFinishedSimulations(ids: string[]): void {
+    Array.from(this.simulations.entries()).forEach(([k, v]) => {
+      if (!ids.includes(k) && v.status !== ESimulationStatus.REMOVED) {
+        Log.debug('Client state', `Simulation ${k} was finished. Marking as removed`);
+        this.simulations.set(k, { ...v, status: ESimulationStatus.REMOVED });
+      }
+    });
+  }
+
+  /**
+   * Compare old data with new and log if anything changed.
+   * @param key
+   * @param value
+   */
+  private compareChanges(key: string, value: ISimulationState): void {
+    const existingValue = this.simulations.get(key);
+    if (!existingValue) {
+      Log.log('Client state', 'Received new simulation', JSON.stringify(value, null, 2));
+      return;
+    }
+
+    const differences = diffSimulations(value, existingValue);
+    if (Object.keys(differences).length === 0) return;
+    Log.log('Client state', 'Simulation updated', JSON.stringify(differences, null, 2));
   }
 
   /**

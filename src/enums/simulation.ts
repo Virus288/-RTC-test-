@@ -1,5 +1,6 @@
 export enum ESimulationStatus {
   LIVE = 'LIVE',
+  PRE = 'PRE',
   REMOVED = 'REMOVED',
 }
 

@@ -22,7 +22,9 @@ export default class StateRouter {
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/SimulationState'
+   *               type: array
+   *               items:
+   *                 $ref: '#/components/schemas/SimulationState'
    */
   @Routes.Get('/client/state')
   async execute(_req: express.Request, res: express.Response): Promise<void> {
