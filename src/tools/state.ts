@@ -1,6 +1,7 @@
 import Log from './logger/index';
 import type Bootstrap from './bootstrap';
 import type Router from '../connections/api/index';
+import type ClientLogic from '../services/state';
 import type { IState } from '../types/index';
 import { EventEmitter } from 'events';
 
@@ -8,6 +9,7 @@ class State extends EventEmitter implements IState {
   private _alive: boolean = false;
   private _controllers: Bootstrap | null = null;
   private _router: Router | null = null;
+  private _clientLogic: ClientLogic | null = null;
   private static _instance: State | null = null;
 
   private constructor() {
@@ -28,6 +30,14 @@ class State extends EventEmitter implements IState {
 
   set controllers(val: Bootstrap) {
     this._controllers = val;
+  }
+
+  get clientLogic(): ClientLogic {
+    return this._clientLogic!;
+  }
+
+  set clientLogic(val: ClientLogic) {
+    this._clientLogic = val;
   }
 
   get router(): Router {
@@ -55,14 +65,16 @@ class State extends EventEmitter implements IState {
 
   /**
    * Kill application and all of its connections.
+   * @param exitCode
    */
-  kill(): void {
+  kill(exitCode?: number): void {
     this.alive = false;
     this.controllers.close();
     this.router.close();
+    this.clientLogic.close();
 
     Log.log('Server', 'App closed');
-    process.exit(0);
+    process.exit(exitCode ?? 0);
   }
 }
 

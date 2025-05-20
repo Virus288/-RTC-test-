@@ -1,7 +1,10 @@
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import initHealthRoutes from './controllers/health/index';
+import initStateRoutes from './controllers/state';
 import { FourOhFour } from '../../errors/index';
+import ConfigLoader from '../../tools/configLoader';
+import Log from '../../tools/logger/index';
 import type express from 'express';
 import type swaggerJsdoc from 'swagger-jsdoc';
 import fs from 'fs';
@@ -22,6 +25,7 @@ export default class AppRouter {
    */
   initRoutes(): void {
     initHealthRoutes();
+    initStateRoutes();
   }
 
   /**
@@ -84,5 +88,7 @@ export default class AppRouter {
       res.setHeader('Content-Type', 'application/json');
       res.send(swaggerSpec);
     });
+
+    Log.log('Swagger', `Started swagger documentation at: http://localhost:${ConfigLoader.getConfig().port}/api/docs`);
   }
 }

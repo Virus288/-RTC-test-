@@ -1,0 +1,40 @@
+{
+    "data": {
+        "formatted": {
+            "3eccf850-571f-4e18-8cb3-2c9e3afade7b": {
+                "id": "3eccf850-571f-4e18-8cb3-2c9e3afade7b",
+                "status": "LIVE",
+                "scores": {
+                    "CURRENT": {
+                        "type": "CURRENT",
+                        "home": "0",
+                        "away": "0"
+                    }
+                },
+                "startTime": "2024-03-04T10:36:07.812Z",
+                "sport": "FOOTBALL",
+                "competitors": {
+                    "HOME": {
+                        "type": "HOME",
+                        "name": "Juventus"
+                    },
+                    "AWAY": {
+                        "type": "AWAY",
+                        "name": "Paris Saint-Germain"
+                    }
+                },
+                "competition": "UEFA Champions League"
+            }
+        },
+        "raw": [
+            {
+                "odds": "b9fea454-d014-4e9a-9c6a-dc9621696701,e75d3e5a-5519-4412-bf90-1d298fd4f5fd,14d926e9-5c28-4f8f-98a0-cb63c96b5344,1747766420426,a0d4cfef-9901-4cf4-8e7d-b204f8e1edbf,c995b166-1080-4c0b-8619-a5c26d323882,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@6:6|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@6:6\na2edb962-2d8b-4d60-8915-e5d03e333409,e75d3e5a-5519-4412-bf90-1d298fd4f5fd,54663a52-ec1e-4443-ad9e-cdd987b268cb,1747766447969,79d55654-1dca-48f0-bfb6-136741c6ee10,0737e2e0-8b44-4a7e-808e-48c3c682be0c,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@4:4|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@4:4\n0e38f8c6-cdc5-4936-8101-f9b844de1196,e75d3e5a-5519-4412-bf90-1d298fd4f5fd,54663a52-ec1e-4443-ad9e-cdd987b268cb,1747766444632,30d758e8-4f24-4ecb-8cc9-be4e681143b7,515a4b06-59fe-4cf8-b8fd-adf20887fe24,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@4:7|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@4:7\ncf16840d-757a-4042-be33-0056d53b65e8,e75d3e5a-5519-4412-bf90-1d298fd4f5fd,54663a52-ec1e-4443-ad9e-cdd987b268cb,1747766451856,1e83f84f-37d5-4968-817a-a7fe155bb430,e88a1c20-72f7-47ad-88f8-3a0c29167b57,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@3:9|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@3:9\nb592004a-f28d-4309-b1be-83d39bf010df,e75d3e5a-5519-4412-bf90-1d298fd4f5fd,14d926e9-5c28-4f8f-98a0-cb63c96b5344,1747766465519,2b0b0ff6-e85b-4455-ba2a-5805352669cd,18541be8-a68d-4848-87e9-939013a0ee10,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@5:5|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@5:5\n1668954d-945e-4346-98e2-f1b352733a54,0806f119-f1dd-4c64-9f26-888a7788ceb2,194a83d0-3957-45f3-aa2f-90e62eaccd19,1747766458190,b07b47a9-b7e9-4c8c-809a-c91cea3b3b45,fc9342f2-13fc-48a7-a4bf-d490734a88a0,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@1:9|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@1:8|4b9307c7-04cc-4146-8570-56fbca629ab6@0:1\n6286f764-573b-4f7d-abb6-116c88989fa7,0806f119-f1dd-4c64-9f26-888a7788ceb2,e38de9a4-93e9-40e1-93af-e2fe52824cf7,1747766447022,3de78a15-7abc-4924-b3c6-f0407c38a920,b533d88d-9436-4ea7-bd87-06d0ddd0ee72,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@1:4|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@1:4|4b9307c7-04cc-4146-8570-56fbca629ab6@0:0\naab34848-3820-486d-825c-7c30a74f48b8,0806f119-f1dd-4c64-9f26-888a7788ceb2,194a83d0-3957-45f3-aa2f-90e62eaccd19,1747766468440,e4599fcd-0868-4458-ba40-3c9531ff623e,33a89d49-e193-4222-a1cd-f96c2c057214,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@0:4|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@0:4\n46f4f6d2-73b5-415b-88ed-a6929637186f,0806f119-f1dd-4c64-9f26-888a7788ceb2,194a83d0-3957-45f3-aa2f-90e62eaccd19,1747766461424,1ebec395-3963-4268-aa3b-067a8cd266ea,cd965217-74e8-4395-86c5-7ce9a00f4bfc,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@3:6|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@2:6|4b9307c7-04cc-4146-8570-56fbca629ab6@1:0\n 915e7dab-1ec6-49b0-adb3-aba2185a5c67,0806f119-f1dd-4c64-9f26-888a7788ceb2,194a83d0-3957-45f3-aa2f-90e62eaccd19,1747766468343,51a891df-ba4c-40de-9d70-83d4169ab050,12b63f11-9620-4fc4-84bb-c41ddfbcded3,6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5,4d1eae11-f290-4c91-b2cb-a731559edc64@3:1|4d3d048a-54ba-4c4a-be7d-6bb6bef00851@3:1"
+            }
+        ],
+        "rawMappings": [
+            {
+                "mappings": "18541be8-a68d-4848-87e9-939013a0ee10:Real Madrid;a0d4cfef-9901-4cf4-8e7d-b204f8e1edbf:Barcelona;0737e2e0-8b44-4a7e-808e-48c3c682be0c:Manchester United;2b0b0ff6-e85b-4455-ba2a-5805352669cd:Liverpool;515a4b06-59fe-4cf8-b8fd-adf20887fe24:Bayern Munich;1e83f84f-37d5-4968-817a-a7fe155bb430:Paris Saint-Germain;e88a1c20-72f7-47ad-88f8-3a0c29167b57:Juventus;79d55654-1dca-48f0-bfb6-136741c6ee10:Chelsea;c995b166-1080-4c0b-8619-a5c26d323882:Manchester City;30d758e8-4f24-4ecb-8cc9-be4e681143b7:AC Milan;51a891df-ba4c-40de-9d70-83d4169ab050:Los Angeles Lakers;fc9342f2-13fc-48a7-a4bf-d490734a88a0:Golden State Warriors;cd965217-74e8-4395-86c5-7ce9a00f4bfc:Miami Heat;12b63f11-9620-4fc4-84bb-c41ddfbcded3:Chicago Bulls;1ebec395-3963-4268-aa3b-067a8cd266ea:Boston Celtics;b07b47a9-b7e9-4c8c-809a-c91cea3b3b45:Houston Rockets;33a89d49-e193-4222-a1cd-f96c2c057214:Toronto Raptors;b533d88d-9436-4ea7-bd87-06d0ddd0ee72:Dallas Mavericks;3de78a15-7abc-4924-b3c6-f0407c38a920:Brooklyn Nets;e4599fcd-0868-4458-ba40-3c9531ff623e:Denver Nuggets;14d926e9-5c28-4f8f-98a0-cb63c96b5344:UEFA Champions League;54663a52-ec1e-4443-ad9e-cdd987b268cb:UEFA Europa League;194a83d0-3957-45f3-aa2f-90e62eaccd19:NBA;e38de9a4-93e9-40e1-93af-e2fe52824cf7:NBA - pre-season;e75d3e5a-5519-4412-bf90-1d298fd4f5fd:FOOTBALL;0806f119-f1dd-4c64-9f26-888a7788ceb2:BASKETBALL;80075d1e-662f-47e0-85dc-45538891bed5:PRE;6d4cfeff-4a0d-4b73-bd49-5ad6587f9cb5:LIVE;6b55e041-f401-4252-9b95-6685bd3683a2:REMOVED;4d1eae11-f290-4c91-b2cb-a731559edc64:CURRENT;4d3d048a-54ba-4c4a-be7d-6bb6bef00851:PERIOD_1;4b9307c7-04cc-4146-8570-56fbca629ab6:PERIOD_2;a18c8bbf-3aae-4195-893d-8fa666a1135c:PERIOD_3;5682424c-047d-43ce-bee4-f10aaf8b620f:PERIOD_4"
+            }
+        ]
+    }
+}

@@ -1,5 +1,4 @@
-import FakeHealthController from "./health";
+import FakeHealthController from './health';
 
-export {
-  FakeHealthController
-}
+// eslint-disable-next-line import/prefer-default-export
+export { FakeHealthController };

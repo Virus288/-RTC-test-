@@ -12,6 +12,7 @@ export default defineConfig({
       reporter: ['text', 'lcov'],
     },
     setupFiles: ['./test/utils/setup.ts'],
-    maxConcurrency: 1
+    maxConcurrency: 1,
+    testTimeout: 10000,
   },
 });

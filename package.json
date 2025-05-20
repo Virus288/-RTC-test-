@@ -1,6 +1,6 @@
 {
   "name": "mysterious-crawler",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Api crawler, used to get sport related data",
   "productName": "mysterious-crawler",
   "author": "https://github.com/Virus288",
@@ -15,7 +15,7 @@
     "lint": "cross-env NODE_ENV=development eslint -c eslint.config.mjs . --fix --cache",
     "listErrors": "node_modules/.bin/tsc --skipLibCheck",
     "lintStaged": "npx lint-staged",
-    "test": "vitest run --coverage --config ./test/config.ts"
+    "test": "cross-env NODE_ENV=test vitest run --coverage --config ./test/config.ts"
   },
   "lint-staged": {
     "*.ts": [
@@ -28,7 +28,6 @@
   "dependencies": {
     "cors": "2.8.5",
     "express": "5.1.0",
-    "express-rate-limit": "7.5.0",
     "helmet": "^8.0.0",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "5.0.1"
